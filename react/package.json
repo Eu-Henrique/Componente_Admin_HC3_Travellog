@@ -6,8 +6,9 @@
   },
   "dependencies": {
     "apollo-client": "^2.6.8",
+    "axios": "^0.27.2",
     "react": "^16.12.0",
-    "react-apollo": "^3.1.3",
+    "react-apollo": "^3.1.5",
     "react-dom": "^16.12.0",
     "react-intl": "^3.12.0"
   },
@@ -20,6 +21,6 @@
     "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
     "graphql": "^14.6.0",
-    "typescript": "^3.9.6"
+    "typescript": "3.9.7"
   }
 }

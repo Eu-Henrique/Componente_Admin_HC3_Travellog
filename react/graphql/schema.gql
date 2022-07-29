@@ -1,0 +1,15 @@
+query GET_PRODUCTS($id: ID!){ 
+  product(identifier: {field: id, value: $id}){
+    priceRange {
+      sellingPrice {
+        highPrice
+      }
+    }
+    items {
+      name
+      images {
+        imageUrl
+      }
+    }
+  }
+}
