@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { Layout, PageBlock, Button } from 'vtex.styleguide'
 import axios from 'axios'
 import { useQuery } from 'react-apollo'
@@ -17,14 +17,6 @@ import GET_PRODUCTS from './graphql/schema.gql'
 // }
 // ]
 
-const headers = {
-  headers: {
-    "X-VTEX-API-AppKey": "vtexappkey-travellog-BKADEC",
-    "X-VTEX-API-AppToken": "BOMSPNXKHENFOEYELYPIBKNNHABHEDGNQIBFUNKUBWKYRSHGKMXEVPKAOWLGDQWLIRVGSWQGGYDBZJSITZIPXCBYPPHULKQUYMLHJUNCDHJGBMJZBRHGCOVDQHHTKHTO"
-  }
-}
-
-const url = `https://henriquescherer--travellog.myvtex.com/api/catalog_system/pub/products/variations/2`
 
 // const loading:any = {
 //   skus: [{
@@ -43,17 +35,11 @@ const url = `https://henriquescherer--travellog.myvtex.com/api/catalog_system/pu
 // }
 
 const AdminExample: FC = () => {
-  var [product, setProduct] = useState(null)
 
   const { loading, error, data} = useQuery(GET_PRODUCTS, {
     variables: { "id": "2" }
   });
 
-  useEffect(() => {
-    axios.get(url, headers).then((response) => {
-    setProduct(response.data);
-  });
-}, []);
 
   console.log(product)
   console.log(loading)
