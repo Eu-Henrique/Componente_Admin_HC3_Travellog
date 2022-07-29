@@ -42,7 +42,7 @@ const url = `https://henriquescherer--travellog.myvtex.com/api/catalog_system/pu
 //   return await(res.data);
 // }
 
-const combos: FC = () => {
+const AdminExample: FC = () => {
   var [product, setProduct] = useState(null)
 
   const { loading, error, data} = useQuery(GET_PRODUCTS, {
@@ -87,4 +87,4 @@ const combos: FC = () => {
   )
 }
 
-export default combos
+export default AdminExample
