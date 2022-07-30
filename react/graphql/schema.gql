@@ -1,10 +1,11 @@
-query GET_PRODUCTS($id: ID!){ 
+query($id: ID!){ 
   product(identifier: {field: id, value: $id}){
     priceRange {
       sellingPrice {
         highPrice
       }
     }
+    linkText
     items {
       name
       images {

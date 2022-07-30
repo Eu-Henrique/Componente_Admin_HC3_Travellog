@@ -4,17 +4,20 @@ import { useQuery } from 'react-apollo'
 import GET_PRODUCTS from './graphql/schema.gql'
 
 import combination from './pages/comboTable'
+import head from './pages/header'
 
 
 const ids = [{
-  id: '2',
+  id1: '2',
+  id2: '3',
   // produto2: '6',
-  // quantity: '23'
+  quantity: 23
 },
 {
-  id: '3',
+  id1: '3',
+  id2: '2',
   // produto2: '6',
-  // quantity: '14'
+  quantity: 14
 }
 ]
 
@@ -28,7 +31,7 @@ const AdminExample: FC = () => {
 
   var rows = [];
   for (var i = 0; i<ids.length; i++){
-    rows.push(combination(ids[i].id))
+    rows.push(combination(ids[i].id1, ids[i].id2, ids[i].quantity))
   }
 
 
@@ -42,6 +45,7 @@ const AdminExample: FC = () => {
      title="Principais Combinações"
      subtitle="As combinações mais vendidas de sua loja"
      variation="full">
+      {head()}
       {rows}
       <Button/>
     </PageBlock>
