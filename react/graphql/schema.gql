@@ -1,5 +1,6 @@
 query($id: ID!){ 
   product(identifier: {field: id, value: $id}){
+    productName
     priceRange {
       sellingPrice {
         highPrice

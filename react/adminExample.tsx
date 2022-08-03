@@ -9,7 +9,7 @@ import head from './pages/header'
 
 const ids = [{
   id1: '2',
-  id2: '3',
+  id2: '81',
   // produto2: '6',
   quantity: 23
 },
@@ -22,7 +22,7 @@ const ids = [{
 ]
 
 
-const AdminExample: FC = () => {
+const adminExample: FC = () => {
 
   const { loading, error, data} = useQuery(GET_PRODUCTS, {
     variables: { "id": "2" }
@@ -53,4 +53,4 @@ const AdminExample: FC = () => {
   )
 }
 
-export default AdminExample
+export default adminExample

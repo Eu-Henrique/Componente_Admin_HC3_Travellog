@@ -1,12 +1,13 @@
 import React from 'react'
+import {IconPlus, ButtonWithIcon } from 'vtex.styleguide'
 
-
+const plus = <IconPlus/>
 
 function head() {
     return(
-        <div>
-            <button style={{float: 'right'}}>Criar Combinação</button>
-        </div>
+        <form action='/admin/app/newcomposition'>
+            <ButtonWithIcon icon={plus} type='submit' style={{float: 'right'}}>Criar Combinação</ButtonWithIcon>
+        </form>
     )
 }
 

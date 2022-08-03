@@ -2,5 +2,9 @@
     "admin.app.example": {
       "component": "adminExample",
       "path": "/admin/app/combos"
+    },
+    "admin.app.otherexample": {
+      "component": "newCombo",
+      "path": "/admin/app/newcomposition"
     }
 }

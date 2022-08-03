@@ -5,6 +5,7 @@
     "test": "vtex-test-tools test"
   },
   "dependencies": {
+    "@vtex/styleguide": "^9.146.1",
     "apollo-client": "^2.6.8",
     "axios": "^0.27.2",
     "react": "^16.12.0",
@@ -21,6 +22,7 @@
     "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
     "graphql": "^14.6.0",
+    "sass": "^1.54.0",
     "typescript": "3.9.7"
   }
 }
