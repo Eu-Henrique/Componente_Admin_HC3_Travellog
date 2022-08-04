@@ -1,0 +1,5 @@
+query getProducts{
+  products(hideUnavailableItems: false, to: 81){
+    productId
+    }
+}
