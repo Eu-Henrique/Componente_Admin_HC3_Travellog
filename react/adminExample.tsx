@@ -1,56 +1,94 @@
-import React, { FC } from 'react'
-import { Layout, PageBlock, Button } from 'vtex.styleguide'
-import { useQuery } from 'react-apollo'
-import GET_PRODUCTS from './graphql/schema.gql'
+import React, { useEffect } from 'react'
+import { Layout, PageBlock } from 'vtex.styleguide'
+// import { useQuery } from 'react-apollo'
+// import GET_PRODUCTS from './graphql/schema.gql'
 
 import combination from './pages/comboTable'
 import head from './pages/header'
 
+// var ids = [{}]
 
-const ids = [{
-  id1: '2',
-  id2: '81',
-  // produto2: '6',
-  quantity: 23
-},
-{
-  id1: '3',
-  id2: '2',
-  // produto2: '6',
-  quantity: 14
+const response = {
+  "topStore": {
+      "1": [
+          {
+              "88": 88,
+              "106": 106
+          }
+      ],
+      "2": [
+          {
+              "84": 84,
+              "115": 115
+          },
+          {
+              "141": 141,
+              "145": 145
+          }
+      ],
+      "qty": {
+          "top1": 6,
+          "top2": 5
+      }
+  }
 }
-]
+var sideIds:any[] = []
 
+  function handleCombo(response:any) {
+    sideIds = []
+    const length:number = (Object.keys(response?.topStore).length)
 
-const adminExample: FC = () => {
-
-  const { loading, error, data} = useQuery(GET_PRODUCTS, {
-    variables: { "id": "2" }
-  });
-
-
-  var rows = [];
-  for (var i = 0; i<ids.length; i++){
-    rows.push(combination(ids[i].id1, ids[i].id2, ids[i].quantity))
+    for (var i=1; i<length; i++){
+      
+      var qty:any = Object.values(response?.topStore.qty)[i -1]
+      var param = `${i}`
+      for (var j=0; j<response?.topStore[param].length; j++){
+        var newId = {}
+        newId = {
+          idOne: Object.keys(response?.topStore[param][j])[0],
+          id2: Object.keys(response?.topStore[param][j])[1], 
+          quantity: qty }
+          sideIds.push(newId)
+        }
+      }
+      return sideIds
   }
 
+function adminExample() {
+  
+  handleCombo(response)
+  var sideRows:any[] = [];
+  function handleRows(){
+    sideRows = []
+    
+    for (var i = 0; i<sideIds?.length; i++){
+      sideRows?.push(combination(sideIds[i]?.idOne, sideIds[i]?.id2, sideIds[i]?.quantity))
+    }
+    return sideRows
+  }
 
-  console.log(loading)
-  console.log(error)
-  console.log (data)
+  useEffect(() => {
+    console.log("passei")
+}, [sideIds])
 
-  return (
-  <Layout>
+// var rows:any[] = []
+//  for(var i = 0; i<ids?.length; i++){
+//     rows.push(combination(ids[i]?.idOne, ids[i]?.id2, ids[i]?.quantity))
+//   }
+  const rows = handleRows()
+
+  return(
+    <Layout>
     <PageBlock
      title="Principais Combinações"
      subtitle="As combinações mais vendidas de sua loja"
      variation="full">
       {head()}
       {rows}
-      <Button/>
     </PageBlock>
   </Layout>
   )
+  
 }
 
 export default adminExample

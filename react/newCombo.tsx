@@ -15,8 +15,8 @@ function newCombo() {
     function selectProduct (event: React.ChangeEvent<HTMLInputElement>) {
         var selectedId = event.target.value
 
-        if(newIds.includes(selectedId[1])){
-            newIds.shift();
+        if(sideIds.includes(selectedId)){
+            sideIds.shift();
         }
         else{
         sideIds.push(selectedId)
@@ -59,7 +59,7 @@ function newCombo() {
 
     while (loading){
     return (
-        <div style={{ "gridTemplateRows": "auto auto"}}>
+        <div style={{ "gridTemplateColumns": "auto auto auto"}}>
             {rows}
         </div>
     )

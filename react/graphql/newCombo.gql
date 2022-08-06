@@ -1,5 +1,5 @@
 query($id: ID!){ 
-  product(identifier: {field: sku, value: $id}){
+  product(identifier: {field: id, value: $id}){
     productName
     priceRange {
       sellingPrice {
