@@ -6,7 +6,7 @@ const plus = <IconPlus/>
 function head() {
     return(
         <form action='/admin/app/newcomposition'>
-            <ButtonWithIcon icon={plus} type='submit'>Criar Combinação</ButtonWithIcon>
+            <ButtonWithIcon style={{'textAlign':'right', "alignItems":'flex-end'}} icon={plus} type='submit'>Criar Combinação</ButtonWithIcon>
         </form>
     )
 }

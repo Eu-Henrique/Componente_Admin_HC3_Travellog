@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from 'react-apollo'
 import GET_PRODUCTS from '../graphql/schema.gql'
-import { FormattedCurrency } from 'vtex.format-currency'
+// import { FormattedCurrency } from 'vtex.format-currency'
 // import { Toggle } from 'vtex.styleguide'
 
 // function invert(state:boolean) {
@@ -43,16 +43,21 @@ function combination(productOne:String, productTwo:String, comboTimes:number) {
     const totalPrice = dataOne?.product.priceRange.sellingPrice.highPrice + dataTwo?.product.priceRange.sellingPrice.highPrice
     
     return (
-        <>
-       <div style={{display: 'inline-grid', gridTemplateColumns: '100px 250px 100px 250px auto', padding: '10px'}}>
-        <img style={{maxHeight: '100px'}} src={dataOne?.product.items[0].images[0].imageUrl}/>
-        <p style={{margin: '25px 15px', maxHeight: '50px', backgroundColor: 'white', textDecoration: 'none'}}>{sliceOne}</p>
-        <img style={{maxHeight: '100px'}} src={dataTwo?.product.items[0].images[0].imageUrl}/>
-        <p style={{margin: '25px 15px', maxHeight: '50px', backgroundColor: 'white', textDecoration: 'none'}}>{sliceTwo}</p>
-        <p><b><FormattedCurrency value={totalPrice} /></b> <br/>{comboTimes} vezes<br/>vendidas</p>
-       </div>
-       <hr/>
-       </>
+        {imageOne: dataOne?.product.items[0].images[0].imageUrl,
+        nameOne: sliceOne,
+        imageTwo: dataTwo?.product.items[0].images[0].imageUrl,
+        nameTwo: sliceTwo,
+        price: totalPrice,
+        qty: comboTimes}
+    //    <div style={{display: 'inline-grid', gridTemplateColumns: '100px 250px 100px 250px auto', padding: '10px'}}>
+        
+    //     <p style={{margin: '25px 15px', maxHeight: '50px', backgroundColor: 'white', textDecoration: 'none'}}>{sliceOne}</p>
+    //     <img style={{maxHeight: '100px'}} src={dataTwo?.product.items[0].images[0].imageUrl}/>
+    //     <p style={{margin: '25px 15px', maxHeight: '50px', backgroundColor: 'white', textDecoration: 'none'}}>{sliceTwo}</p>
+    //     <p><b><FormattedCurrency value={totalPrice} /></b> <br/>{comboTimes} vezes<br/>vendidas</p>
+    //    </div>
+    //    <hr/>
+    //    </>
     )
 }
 
