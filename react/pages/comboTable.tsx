@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from 'react-apollo'
-import GET_PRODUCTS from '../graphql/schema.gql'
+import GET_PRODUCTS from '../graphql/newCombo.gql'
 // import { FormattedCurrency } from 'vtex.format-currency'
 // import { Toggle } from 'vtex.styleguide'
 
@@ -15,14 +15,12 @@ import GET_PRODUCTS from '../graphql/schema.gql'
 
 function combination(productOne:String, productTwo:String, comboTimes:number) {
 
-    console.log(productOne)
-
     const { loading: loadingOne,data: dataOne } = useQuery(GET_PRODUCTS, {
         variables: { "id": `${productOne}` }
     });
 
 
-    const { loading: loadingTwo, data: dataTwo, error } = useQuery(GET_PRODUCTS, {
+    const { loading: loadingTwo, data: dataTwo } = useQuery(GET_PRODUCTS, {
         variables: { "id": `${productTwo}` }
     });
 
@@ -33,9 +31,6 @@ function combination(productOne:String, productTwo:String, comboTimes:number) {
             </div>
         )
     }
-
-    console.log(error)
-    console.log(dataOne)
 
     const sliceOne = dataOne?.product.productName.slice(0, 50)
     const sliceTwo = dataTwo?.product.productName.slice(0, 50)

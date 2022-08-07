@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Layout, PageBlock, Table } from 'vtex.styleguide'
 import { FormattedCurrency } from 'vtex.format-currency'
-// import axios from 'axios'
+import axios from 'axios'
 // import { useQuery } from 'react-apollo'
 // import GET_PRODUCTS from './graphql/schema.gql'
 
@@ -10,86 +10,86 @@ import head from './pages/header'
 
 // var ids = [{}]
 
-const tableLength = 5
+const tableLength = 10
 
 
 const defaultSchema = {
   properties: {
     imageOne: {
-      title: '  ',
-      width: 80,
+      title: 'Image',
+      width: 100,
       cellRenderer: ({ cellData }: any) => {
-        return(
-          <img src={cellData}/>
+        return (
+          <img src={cellData} />
         )
       }
     },
     nameOne: {
-      title: 'Product',
-      width: 250
+      title: 'Product 1',
+      width: 450
     },
     imageTwo: {
-      title: '  ',
-      width: 80,
+      title: 'Image',
+      width: 100,
       cellRenderer: ({ cellData }: any) => {
-        return(
-          <img src={cellData}/>
+        return (
+          <img src={cellData} />
         )
       }
     },
     nameTwo: {
-      title: 'Product',
-      width: 250
+      title: 'Product 2',
+      width: 450
     },
     price: {
       title: 'Combo Price',
       width: 150,
       cellRenderer: ({ cellData }: any) => {
-        return(
-          <FormattedCurrency style={{"textAlign": "center"}} value={cellData}/>
+        return (
+          <FormattedCurrency style={{ "textAlign": "center" }} value={cellData} />
         )
       }
     },
     qty: {
-      title: 'Sells',
-      width: 70
+      title: 'Times Sold',
+      width: 100
     }
-  },
+  }
 }
 
 const response = {
-  "topStore": {
-      "1": [
-          {
-              "88": 88,
-              "106": 106
-          }
-      ],
-      "2": [
-          {
-              "84": 84,
-              "115": 115
-          },
-          {
-              "141": 141,
-              "145": 145
-          }
-      ],
-      "qty": {
-          "top1": 6,
-          "top2": 5
-      }
-  }
+    "topStore": {
+        "1": [
+            {
+                "2": 4,
+                "7": 7
+            },
+            {
+                "9": 9,
+                "89": 89
+            }
+        ],
+        "2": [
+            {
+                "2": 2,
+                "8": 8
+            }
+        ],
+        "qty": {
+            "top1": 39,
+            "top2": 12
+        }
+    }
 }
 var sideIds:any[] = []
 
   function handleCombo(response:any) {
     sideIds = []
-    const length:number = (Object.keys(response?.topStore).length)
+    const length:number = (Object?.keys(response?.topStore).length)
 
     for (var i=1; i<length; i++){
       
-      var qty:any = Object.values(response?.topStore.qty)[i -1]
+      var qty:any = Object?.values(response?.topStore.qty)[i -1]
       var param = `${i}`
       for (var j=0; j<response?.topStore[param].length; j++){
         var newId = {}
@@ -104,21 +104,26 @@ var sideIds:any[] = []
   }
 
 function adminExample() {
+  const [ sideCombos, setSideCombos ] = useState<any>(response)
 
-  // const [ combos, setCombos ] = useState<any>()
+  const [ combos, setCombos ] = useState<any>(response)
 
-  // const getData = async () => {
-  //   await axios.get('https://hccombinationsapi.tk/combinations-api/v1//store-top-combinations')
-  //   .then(request => {
-  //     console.log(request.data)
-  //     setCombos(request.data)
-  //   })
-  //   .catch(e => {console.log(`${e}`)})
-  // }
-  // getData()
+  const getData = async () => {
+    await axios.get('https://hccombinationsapi.tk/combinations-api/v1//store-top-combinations')
+    .then(request => {
+      setSideCombos(request.data)
+    })
+    .catch(e => {console.log(`${e}`)})
+  }
 
-  // console.log(combos)
-  handleCombo(response)
+  getData()
+
+  useEffect(() => {
+    setCombos(sideCombos)
+  },[sideCombos])
+
+  handleCombo(combos)
+
   var sideRows:any[] = [];
   function handleRows(){
     sideRows = []
@@ -198,7 +203,7 @@ function adminExample() {
       <Table
       items={rows}
       schema={defaultSchema}
-      desnsity="low" 
+      desnsity={'low'} 
       dynamicRowHeight={true}
       pagination={{
         onNextClick: handleNextClick,
@@ -208,7 +213,8 @@ function adminExample() {
         onRowsChange: handleRowsChange,
         textShowRows: 'Show rows',
         textOf: 'of',
-        totalItems: state.itemsLength}}>
+        totalItems: state.itemsLength}}
+        fullWidth={true}>
       </Table>
     </PageBlock>
   </Layout>
