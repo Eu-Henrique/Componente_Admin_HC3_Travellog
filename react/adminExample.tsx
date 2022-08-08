@@ -8,7 +8,6 @@ import axios from 'axios'
 // import GET_PRODUCTS from './graphql/schema.gql'
 
 import combination from './pages/comboTable'
-import head from './pages/header'
 
 // var ids = [{}]
 
@@ -151,7 +150,6 @@ function adminExample() {
         subtitle="As combinações mais vendidas de sua loja"
         variation="full"
       >
-        {head()}
         <Table
           items={rows}
           schema={defaultSchema}
