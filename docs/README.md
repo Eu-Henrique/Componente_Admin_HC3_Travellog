@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    Admin Copmponent Combinations
+    Admin Component Combinations
 </h1>
 
 ## 💻 Sobre o projeto
