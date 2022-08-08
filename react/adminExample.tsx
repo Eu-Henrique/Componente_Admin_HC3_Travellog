@@ -10,7 +10,6 @@ import axios from 'axios'
 import combination from './pages/comboTable'
 
 // var ids = [{}]
-
 const defaultSchema = {
   properties: {
     imageOne: {

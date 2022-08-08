@@ -1,7 +1,7 @@
 {
-  "vendor": "vtex",
-  "name": "admin-example",
-  "version": "0.0.0",
+  "vendor": "travellog",
+  "name": "admin-combinations",
+  "version": "0.0.1",
   "title": "Composition",
   "description": "Amount of store compositions",
   "builders": {
@@ -15,9 +15,7 @@
     "vtex.search-graphql": "0.x",
     "vtex.format-currency": "0.x"
   },
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
